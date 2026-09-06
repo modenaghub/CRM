@@ -1,0 +1,25 @@
+{
+  "name": "crm-platform",
+  "private": true,
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev:api": "pnpm --filter @crm/api start:dev",
+    "dev:web": "pnpm --filter @crm/web dev",
+    "build:api": "pnpm --filter @crm/api build",
+    "build:web": "pnpm --filter @crm/web build",
+    "db:generate": "pnpm --filter @crm/api db:generate",
+    "db:migrate": "pnpm --filter @crm/api db:migrate",
+    "db:seed": "pnpm --filter @crm/api db:seed",
+    "db:studio": "pnpm --filter @crm/api db:studio"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@nestjs/core",
+      "bcryptjs",
+      "esbuild"
+    ]
+  }
+}

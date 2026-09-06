@@ -1,0 +1,1 @@
+ALTER TABLE "opportunities" ADD COLUMN "stage_changed_at" timestamp with time zone DEFAULT now() NOT NULL;
