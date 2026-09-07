@@ -19,7 +19,10 @@
     "onlyBuiltDependencies": [
       "@nestjs/core",
       "bcryptjs",
-      "esbuild"
+      "esbuild",
+      "@prisma/client",
+      "@prisma/engines",
+      "prisma"
     ]
   }
 }

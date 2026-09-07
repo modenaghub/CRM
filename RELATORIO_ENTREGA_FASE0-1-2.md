@@ -43,8 +43,8 @@ A árvore completa de arquivos está disponível no ambiente e pode ser exportad
 
 Testado via chamadas HTTP diretas **e** via navegador headless (Playwright) contra a aplicação real rodando:
 
-1. **Multi-segmento comprovado**: a organização seed "VPJ Alimentos Ltda (Demo)" (segmento Indústria) tem menu, pipeline e módulos próprios do segmento. Uma nova organização registrada em tempo de teste ("Oficina do Zé", segmento Oficina) recebeu automaticamente um conjunto totalmente diferente de módulos, um pipeline de 5 estágios ("Ordens de Serviço") e um objeto dinâmico "Veículo" com campos próprios — **sem qualquer alteração de código**, confirmando a Regra Arquitetural Fundamental do prompt (seção 33).
-2. **Login → Dashboard → navegação por todo o menu**: testado no navegador real (Playwright/Chromium), autenticando como `admin@vpjalimentos.com.br`.
+1. **Multi-segmento comprovado**: a organização seed "Alvorecer Dourado Ltda (Demo)" (segmento Indústria) tem menu, pipeline e módulos próprios do segmento. Uma nova organização registrada em tempo de teste ("Oficina do Zé", segmento Oficina) recebeu automaticamente um conjunto totalmente diferente de módulos, um pipeline de 5 estágios ("Ordens de Serviço") e um objeto dinâmico "Veículo" com campos próprios — **sem qualquer alteração de código**, confirmando a Regra Arquitetural Fundamental do prompt (seção 33).
+2. **Login → Dashboard → navegação por todo o menu**: testado no navegador real (Playwright/Chromium), autenticando como `admin@alvorecerdourado.com.br`.
 3. **Kanban de oportunidades**: criação de oportunidade via modal na UI, drag-and-drop real do card entre colunas, e confirmação via API de que o estágio foi persistido no banco (`stageChangedAt` atualizado). Registro de teste removido após validação.
 4. **Fluxo Prospect → Cliente → Automação**: conversão de prospect dispara evento que cria tarefa de boas-vindas automaticamente (Workflow Builder).
 5. **Build de produção do frontend**: `vite build` executa sem erros, gerando bundle otimizado (109,91 kB gzip).
@@ -55,7 +55,7 @@ Testado via chamadas HTTP diretas **e** via navegador headless (Playwright) cont
 ### 4. Banco de dados
 
 - PostgreSQL 16, banco `crm_dev`, **48 tabelas** migradas via Drizzle Kit (2 migrações aplicadas).
-- Seed populado com: catálogo de módulos, permissões, planos, feature flags e verticais; templates completos para os segmentos Indústria e Oficina; organização de demonstração "VPJ Alimentos Ltda (Demo)" com usuários (`admin@vpjalimentos.com.br` / `ana@vpjalimentos.com.br`, senha `Demo@123`), pipeline com 8 estágios, fornecedores, produtos, prospects, clientes, contatos, oportunidades, tarefas e uma automação de exemplo.
+- Seed populado com: catálogo de módulos, permissões, planos, feature flags e verticais; templates completos para os segmentos Indústria e Oficina; organização de demonstração "Alvorecer Dourado Ltda (Demo)" com usuários (`admin@alvorecerdourado.com.br` / `ana@alvorecerdourado.com.br`, senha `Demo@123`), pipeline com 8 estágios, fornecedores, produtos, prospects, clientes, contatos, oportunidades, tarefas e uma automação de exemplo.
 
 ---
 
@@ -93,6 +93,6 @@ O núcleo universal, o motor de verticais e o CRUD/Kanban/Dashboard essenciais e
 
 - **API**: `http://localhost:3333/api` (rodando em background nesta sessão).
 - **Frontend**: `pnpm --filter @crm/web dev` a partir da raiz do monorepo (porta 5173).
-- **Login de demonstração**: `admin@vpjalimentos.com.br` / `Demo@123` (organização "VPJ Alimentos Ltda (Demo)", segmento Indústria).
+- **Login de demonstração**: `admin@alvorecerdourado.com.br` / `Demo@123` (organização "Alvorecer Dourado Ltda (Demo)", segmento Indústria).
 
 O código-fonte completo está disponível neste ambiente de sessão. Caso deseje o pacote para levar para outro ambiente (ex.: seu próprio repositório Git ou máquina local), posso gerar um arquivo `.zip`/`.tar.gz` do monorepo (excluindo `node_modules`) para download — é só pedir.
