@@ -27,6 +27,15 @@ services:
       JWT_REFRESH_EXPIRES_IN: 7d
       PORT: 3333
       CORS_ORIGIN: "*"
+      # Usado para montar o link público que o fornecedor recebe por
+      # WhatsApp/e-mail (preencher cotação / confirmar ordem de compra).
+      # Troque para a URL real do seu CRM em produção (ex.: https://crm.suaempresa.com.br).
+      APP_PUBLIC_URL: ${APP_PUBLIC_URL:-http://localhost}
+    volumes:
+      # Sem isso, arquivos enviados pelo usuário (logo da empresa, fotos de
+      # produto) ficam só no filesystem do container e somem a cada
+      # `docker compose up -d --build` — bug real encontrado nesta varredura.
+      - crm_uploads:/repo/apps/api/uploads
     depends_on:
       postgres:
         condition: service_healthy
@@ -43,3 +52,4 @@ services:
 
 volumes:
   crm_pgdata:
+  crm_uploads:
